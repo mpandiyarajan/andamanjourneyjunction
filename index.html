@@ -144,6 +144,7 @@
             overflow: hidden;
             border-radius: 15px;
             margin-bottom: 30px;
+             z-index: 1000;
         }
         
         .destination-overlay {
@@ -158,10 +159,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+             z-index: 1000;
         }
         
         .destination-card:hover .destination-overlay {
             opacity: 1;
+             z-index: 1000;
         }
         
         .destination-info {
@@ -169,10 +172,12 @@
             color: white;
             transform: translateY(20px);
             transition: transform 0.3s ease;
+             z-index: 1000;
         }
         
         .destination-card:hover .destination-info {
             transform: translateY(0);
+             z-index: 1000;
         }
         
         .stats-section {
@@ -292,27 +297,27 @@
             }
         }
         
-        .floating-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    z-index: 1000;
+.floating-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        z-index: 1000;
 
     /* Center the icon */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0;
 }
 
         .floating-btn:hover {
