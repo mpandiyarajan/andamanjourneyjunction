@@ -139,41 +139,26 @@
             transform: scale(1.05);
         }
         
-        .destination-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            margin-bottom: 30px;
-             z-index: 1000;
-        }
-        
-        .destination-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-             z-index: 1000;
-        }
-        
+    .destination-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        z-index: 1; /* keep it low */
+}
+
+    .destination-overlay {
+        z-index: 2; /* just above the image */
+}
+
+    .destination-info {
+        z-index: 3; /* above overlay */
+}
         .destination-card:hover .destination-overlay {
             opacity: 1;
              z-index: 1000;
         }
         
-        .destination-info {
-            text-align: center;
-            color: white;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-             z-index: 1000;
-        }
         
         .destination-card:hover .destination-info {
             transform: translateY(0);
@@ -364,29 +349,54 @@
         }
 
         .back-to-top {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.3rem;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-  display: none; /* hidden by default */
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            display: none; /* hidden by default */
 }
 
-.back-to-top:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        .back-to-top:hover {
+            transform: scale(1.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
+
+        .subscribe-btn {
+        background: linear-gradient(135deg, #667eea, #764ba2); /* Modern gradient */
+        height: 58px;
+        
+  color: #fff !important;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 36px;
+  border: none;
+  border-radius: 999px; /* Makes it a perfect pill shape */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.subscribe-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.subscribe-btn:active {
+  transform: scale(0.95);
+}
+
 
     </style>
 </head>
@@ -398,6 +408,8 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
+           
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
@@ -406,6 +418,7 @@
                     <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
+                <a href="#" class="btn btn-primary book-now">Book Now</a>
             </div>
         </div>
     </nav>
@@ -593,6 +606,38 @@
         </div>
     </section>
 
+    <!-- Stats Table Section -->
+<section id="stats-table" class="py-5">
+    <div class="container">
+      <h2 class="section-title">Visitor & Booking Stats</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Metric</th>
+              <th scope="col">Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Website Viewed</td>
+              <td>12,540</td>
+            </tr>
+            <tr>
+              <td>Packages Booked</td>
+              <td>3,245</td>
+            </tr>
+            <tr>
+              <td>Contact Requests</td>
+              <td>1,120</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -631,7 +676,10 @@
                     <p>Subscribe for travel tips and exclusive offers!</p>
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Your Email">
-                        <button class="btn btn-primary" type="button">Subscribe</button>
+                        <button type="submit" class="btn subscribe-btn">
+                            <i class="fas fa-bell"></i> Subscribe
+                          </button>
+                          
                     </div>
                 </div>
             </div>
@@ -648,9 +696,9 @@
     </a>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="btn btn-primary" style="display: none; position: fixed; bottom: 90px; right: 20px; border-radius: 50%; width: 50px; height: 50px; z-index: 1000;">
+    <button id="backToTop" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
-    </button>
+      </button>
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
@@ -712,6 +760,27 @@
                 updateCounter();
             });
         }
+        
+    document.addEventListener("DOMContentLoaded", function () {
+  // Get the booking count element
+    let bookCountElement = document.getElementById("bookCount");
+
+  // Convert current text to number
+    let bookCount = parseInt(bookCountElement.textContent);
+
+  // Select all Book Now buttons
+    let bookButtons = document.querySelectorAll(".book-now");
+
+  // Add click event to each button
+    bookButtons.forEach(button => {
+    button.addEventListener("click", function (e) {
+    e.preventDefault(); // prevent page jump if it's a link
+    bookCount++; // increase counter
+    bookCountElement.textContent = bookCount; // update in table
+    });
+  });
+});
+
 
         // Intersection Observer for counter animation
         const observer = new IntersectionObserver((entries) => {
