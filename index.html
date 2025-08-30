@@ -606,36 +606,6 @@
         </div>
     </section>
 
-    <!-- Stats Table Section -->
-<section id="stats-table" class="py-5">
-    <div class="container">
-      <h2 class="section-title">Visitor & Booking Stats</h2>
-      <div class="table-responsive">
-        <table class="table table-bordered table-hover text-center align-middle">
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">Metric</th>
-              <th scope="col">Count</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Website Viewed</td>
-              <td>12,540</td>
-            </tr>
-            <tr>
-              <td>Packages Booked</td>
-              <td>3,245</td>
-            </tr>
-            <tr>
-              <td>Contact Requests</td>
-              <td>1,120</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
   
 
     <!-- Footer -->
@@ -895,9 +865,9 @@
         // Dynamic price calculator (example)
         function calculatePrice(duration, type) {
             const basePrices = {
-                'honeymoon': 9000,
-                'adventure': 7000,
-                'family': 5600
+                'honeymoon': 0,
+                'adventure': 0,
+                'family': 0
             };
             
             return basePrices[type] * duration;
@@ -952,6 +922,17 @@
                 }, 500);
             }
         });
+
+        document.querySelectorAll(".whatsapp-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    let packageName = btn.getAttribute("data-package");
+    let phoneNumber = "918056830126 
+    let message = `Hello, I want to book the ${packageName}. Please share details.`;
+    let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  });
+});
+
     </script>
 </body>
 </html>
