@@ -598,6 +598,8 @@
                             <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+                                <form action="https://formsubmit.co/mbarath698@gmail.com" method="post"></form>
+
                             </div>
                         </form>
                     </div>
@@ -661,7 +663,9 @@
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/+918056830126" class="floating-btn" target="_blank" title="Chat on WhatsApp">
+   <a href="https://wa.me/918056830126text=Hello%20I%20want%20to%20know%20about%20your%20packages">
+
+
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -926,7 +930,7 @@
         document.querySelectorAll(".whatsapp-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     let packageName = btn.getAttribute("data-package");
-    let phoneNumber = "918056830126 
+    let phoneNumber = "918056830126"
     let message = `Hello, I want to book the ${packageName}. Please share details.`;
     let url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
