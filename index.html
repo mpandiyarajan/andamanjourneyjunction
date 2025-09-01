@@ -791,35 +791,35 @@
             });
         });
 
-        // Form submission handling
-        // Contact form submission
-const contactForm = document.getElementById("contactForm");
-
-contactForm.addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  // Collect form values
-  const name = this.querySelector('[name="name"]').value;
+ const name = this.querySelector('[name="name"]').value;
   const email = this.querySelector('[name="email"]').value;
   const phone = this.querySelector('[name="phone"]').value;
   const packageType = this.querySelector('[name="package"]').value;
   const message = this.querySelector('[name="message"]').value;
 
   // WhatsApp message format
-  const phoneNumber = "918056830126"; // your number
+  const phoneNumber = "918056830126"; // your WhatsApp number
   const whatsappMessage = `Hello, I am ${name}.
 Email: ${email}
 Phone: ${phone}
 Package: ${packageType}
 Message: ${message}`;
 
-  // Open WhatsApp with prefilled message
+  // Open WhatsApp in new tab
   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
   window.open(whatsappURL, "_blank");
 
-  // ALSO send via email (FormSubmit)
-  this.submit();
-});
+  // Send email using FormSubmit (via hidden iframe, avoids directory listing)
+  fetch(this.action, {
+    method: "POST",
+    body: new FormData(this)
+  }).then(() => {
+    alert("✅ Your message was sent via Email & WhatsApp!");
+    this.reset();
+  }).catch(() => {
+    alert("⚠️ Failed to send email, but WhatsApp message is opened.");
+  });
+
 
 
         // Newsletter subscription
