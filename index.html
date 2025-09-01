@@ -639,7 +639,7 @@
                     <ul>
                         <li><i class="fas fa-map-marker-alt"></i> Port Blair, Andaman Islands</li>
                         <li><i class="fas fa-phone"></i> +918056830126</li>
-                        <li><i class="fas fa-envelope"></i> info@andamanjunction.com</li>
+                        <li><i class="fas fa-envelope"></i> mbarath698@gmail.com</li>
                         <li><i class="fas fa-clock"></i> 24/7 Support</li>
                     </ul>
                 </div>
@@ -792,28 +792,35 @@
         });
 
         // Form submission handling
-        const contactForm = document.querySelector('form');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show success message
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                submitBtn.textContent = 'Message Sent!';
-                submitBtn.style.background = '#28a745';
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '';
-                    contactForm.reset();
-                }, 2000);
-            }, 1000);
-        });
+        // Contact form submission
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  // Collect form values
+  const name = this.querySelector('[name="name"]').value;
+  const email = this.querySelector('[name="email"]').value;
+  const phone = this.querySelector('[name="phone"]').value;
+  const packageType = this.querySelector('[name="package"]').value;
+  const message = this.querySelector('[name="message"]').value;
+
+  // WhatsApp message format
+  const phoneNumber = "918056830126"; // your number
+  const whatsappMessage = `Hello, I am ${name}.
+Email: ${email}
+Phone: ${phone}
+Package: ${packageType}
+Message: ${message}`;
+
+  // Open WhatsApp with prefilled message
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+  window.open(whatsappURL, "_blank");
+
+  // ALSO send via email (FormSubmit)
+  this.submit();
+});
+
 
         // Newsletter subscription
         const newsletterBtn = document.querySelector('.input-group .btn');
